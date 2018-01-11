@@ -256,11 +256,8 @@
   }
 
   // cross-browser events
-  function addEvent(object, event, method) {
-    if (object.addEventListener)
-      object.addEventListener(event, method, false);
-    else if(object.attachEvent)
-      object.attachEvent('on'+event, function(){ method(window.event) });
+  function addEvent(element, event, method) {
+    element.addEventListener(event, method, {capture: true});
   };
 
   // set the handlers globally on document
